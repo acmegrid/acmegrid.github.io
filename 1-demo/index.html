@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<link href="../assets/footable.core.css" rel="stylesheet" type="text/css" />
+<link href="../assets/footable.metro.css" rel="stylesheet" type="text/css" />
+<script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+<link href='//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css' rel='stylesheet'/>
+<script src='//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js'></script>
+
+
+<script src="../assets/footable.js" type="text/javascript"></script>
+
+
+<link rel="stylesheet" href="../assets/zcss/bootstrap.css">
+<script src="../assets/zebra_datepicker.js" type="text/javascript"></script>
+
+
+
+<script>
+
+$(document).on("pageshow",function(){
+$('select').prop('selectedIndex',0);
+});
+
+$(document).ready(function(){
+
+$('.selobj > .pg').hide();
+$('.selobj').find('div.pg:first').show();
+$('.selobj #select').change(function() {
+   $(this).parent().find('.pg').hide();
+   $(this).parent().find('#' + $(this).find('option:selected').val()).show();
+   $(this).blur();
+});
+
+
+
+var owl = $("#owl-demo");
+ 
+owl.owlCarousel({ items : 4,
+itemsDesktop : [1199,3],
+itemsDesktopSmall : [979,3],
+itemsTablet : [700,3]});
+
+
+$('#btn1').click(function() {
+   $("#gmap1").attr("src",$("#gmap1").attr("src"));
+});
+
+$('#btn2').click(function() {
+   $("#vid1").attr("src",$("#vid1").attr("src"));
+});
+
+
+$('.footable').footable();
+
+
+$("#fzcal").Zebra_DatePicker({always_visible:$("#zcal"),
+  onSelect: function(dat){
+    var myedit = $(this);
+    var mlist = $(myedit).attr("mylist");
+    var thedate = dat;
+    $(mlist + " > div").hide();
+    $(mlist + " > div[dclass^=" + thedate + "]").fadeIn();
+  },
+  onClear: function(){
+    var myedit = $(this);
+    var mlist = $(myedit).attr("mylist");
+    var thedate = $(this).attr("thelastdate").substring(0,7);
+    $(mlist + " > div").hide();
+    $(mlist + " > div[dclass^=" + thedate + "]").fadeIn();  
+  },  
+  onChange: function(view, elements) {
+    var myedit = $(this);
+    var fltr = new RegExp($(myedit).attr("mymatch"));
+
+    if (view == 'days') {
+      elements.each(function() {
+        var vtest  = $(this).data('date');
+      	$(myedit).attr("thelastdate", vtest);
+        if ($(this).data('date').match(fltr))
+          $(this).css({
+            backgroundColor:    '#C40000',
+            color:              '#FFF'
+          });
+        });
+    var mlist = $(myedit).attr("mylist");
+    var thedate = $(this).attr("thelastdate").substring(0,7);
+    $(mlist + " > div").hide();
+    $(mlist + " > div[dclass^=" + thedate + "]").fadeIn();       
+      }
+    }
+});
+
+
+$("#sgalertbar").click(function(){ $(this).hide(); });
+
+});
+
+</script>
+
+<style>
+#hor-minimalist-b{font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;font-size:12px;background:#fff;width:100%;border-collapse:collapse;text-align:left;margin:0px;}#hor-minimalist-b th{font-size:14px;font-weight:normal;color:#039;border-bottom:2px solid #6678b1;padding:10px 8px;}#hor-minimalist-b td{border-bottom:1px solid #ccc;color:#669;padding:6px 8px;}#hor-minimalist-b tbody tr:hover td{color:#009;}
+
+.ui-content {background:#FFFFFF; font-family:'Ubuntu';}
+
+.sgcontent {font-family:'Ubuntu';}
+
+select {font-size:1.25em;}
+
+#owl-demo .item{
+margin: 3px;
+}
+
+    #owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: auto;
+    }
+
+
+
+.aspectWrap {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.aspectWrap iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+.alert{padding:15px;margin-bottom:20px;border:1px solid transparent;border-radius:4px}
+
+.alert-info{background-color:#fff8c4;border-color:#f2c779;color:#606060}
+
+
+.calframe{ 
+background-image:url('calback.png');
+background-repeat:repeat-x;
+background-position: 0px 50px; 
+}
+
+
+
+
+</style>
+
+<link rel="stylesheet" href="../assets/owl.carousel.css">
+<!-- Default Theme -->
+<link rel="stylesheet" href="../assets/owl.theme.css">
+<!-- Include js plugin -->
+<script src="../assets/owl.carousel.js"></script>
+
+</head>
+<title>Plus</title>
+<body>
+
+
+
+<div data-role="page" id="pageone" data-theme="a">
+
+  <div data-role="panel" id="SoloNav" data-display="overlay" class="sgcontent"> 
+    <h2>Sologrid.com</h2>
+<h5>Tag line here</h5>
+<a href="#">Home</a><br/>
+<a href="#">Join Now</a><br/>
+<a href="#">About</a><br/>
+<p>General notice here.</p>
+    <p>Common information about this website.</p>    
+    <a href="#" data-rel="close" class="ui-btn ui-mini ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close</a>
+  </div> 
+
+  <div data-role="panel" id="SoloSettings" data-display="overlay" class="sgcontent" data-position="right"> 
+    <h2>Settings</h2>
+<p>Data Metrics.</p>
+    <div>
+    <img src="http://i.imgur.com/MeOYzCw.png" style="width:100%"/>
+    </div>
+    <p>Content to describe the graphics that are being displayed.</p>    
+    <a href="#" data-rel="close" class="ui-btn ui-mini ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close</a>
+  </div>   
+
+
+
+  <div data-role="main" class="ui-content" style="padding-top:0px;">
+
+
+  <div data-role="collapsible" data-theme="b" data-content-theme="b" class="sgcontent" data-inset="false" data-iconpos="right" data-collapsed-icon="bars" data-expanded-icon="delete">
+    <h4><span class="sgcontent">1-demo</span></h4>
+    <div>
+
+    <h2>sologrid.com</h2>
+<h4>Simplified Mobile Advertising Platform</h4>
+<a href="#">Home</a><br/>
+<a href="#">Join Now</a><br/>
+<a href="#">About</a><br/>
+<p>General notice here.</p>
+
+    <div>
+    <img src="http://i.imgur.com/MeOYzCw.png" style="width:100%;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;"/>
+    </div>
+    
+    <p>Common information about this website.</p>    
+    <br/>
+    </div>
+  </div>  
+
+  
+<div id="sgalertbar" style="background-color:firebrick;margin:0px -16px;padding:16px;color:white;">
+Breaking news: This site is in beta mode.
+</div>  
+  
+   <h1>ACME Inc Plus</h1>
+   
+    <div class="alert alert-info">
+      <strong>Alert!</strong> This is an important notice.
+    </div>
+     
+   <h1>Events Calendar</h1>    
+   
+<div class="ui-grid-a ui-responsive">
+    <div class="ui-block-a"><div class="calframe ui-body ui-body-d">
+
+
+<div style="display:none;width:223px;margin:0 auto;">
+   <input id="fzcal" type="text" mylist="#thelistcal" mymatch="(2014-07-04|2014-07-09|2014-07-26|2014-07-31|2014-08-19|2014-08-23|2014-09-11|2014-09-27)"/>
+   </div>      
+<div id="zcal" style="width:223px;height:300px;margin:0 auto;"></div>
+  
+    
+    
+    </div></div>
+    <div class="ui-block-b"><div class="ui-body ui-body-d">
+    
+<div id="thelistcal">
+<h2>Events</h2>
+<div dclass="2014-07-04">
+<h3>Memorial Day Tournament</h3>
+<h4>Saturday July 4, 2013 9:00 AM</h4>
+<p>
+Pellentesque vitae dui id dolor molestie interdum sit amet quis urna. Cras imperdiet tempus nisi, at euismod felis cursus sed.
+</p>
+<hr/>
+</div>
+<div dclass="2014-07-04">
+<h3><a href="http://www.google.com">Father Daughter Meet</a></h3>
+<h4>Saturday July 4, 2013 4:00 PM</h4>
+<p>
+Sed aliquam ligula in massa scelerisque cursus. Integer ut dignissim massa. Fusce vehicula est in leo mattis auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida. Fusce et sem ac dui mollis sodales.
+</p>
+<hr/>
+</div>
+<div dclass="2014-07-09">
+<h3><a href="http://sologrid.com/acmeplus/">Graduation Blitz</a></h3>
+<h4>Saturday July 9, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+<div dclass="2014-07-09">
+<h3>Graduation Blitz</h3>
+<h4>Saturday July 9, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+<div dclass="2014-07-26">
+<h3>Graduation Blitz</h3>
+<h4>Saturday July 26, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+<div dclass="2014-07-31">
+<h3>Graduation Blitz</h3>
+<h4>Saturday July 31, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+<div dclass="2014-07-31">
+<h3>Graduation Blitz</h3>
+<h4>Saturday July 31, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+<div dclass="2014-08-19">
+<h3>Graduation Blitz</h3>
+<h4>Saturday Aug 19, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+<div dclass="2014-08-23">
+<h3>Graduation Blitz</h3>
+<h4>Saturday Aug 23, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+
+<div dclass="2014-09-11">
+<h3>Graduation Blitz</h3>
+<h4>Saturday Sep 11, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+<div dclass="2014-09-11">
+<h3>Graduation Blitz</h3>
+<h4>Saturday Sep 11, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+<div dclass="2014-09-11">
+<h3>Graduation Blitz</h3>
+<h4>Saturday Sep 11, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+<div dclass="2014-09-27">
+<h3>Graduation Blitz</h3>
+<h4>Saturday Sep 27, 2013 5:00 PM</h4>
+<p>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse malesuada ornare elit quis gravida.
+</p>
+<hr/>
+</div>
+
+
+</div> 
+
+</div>   
+    
+ 
+
+</div>
+   
+   </div>
+   
+   
+   <h1>Mobile Table</h1>    
+   <div>
+
+    <table class="footable" style="width:100%;">
+      <thead>
+        <tr>
+          <th data-class="expand">
+            Make 
+          </th>
+          <th>
+            Model
+          </th>
+          <th data-hide="phone">
+            Year
+          </th>
+          <th data-hide="phone">
+            Desc
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+<tr>
+<td>Dell</td>
+<td>Inspiron</td>
+<td>2014</td>
+<td>Nulla vulputate a arcu sit amet tincidunt. Vestibulum nec sapien placerat, consectetur lectus vel, dignissim nulla. Cras aliquet imperdiet tortor sit amet feugiat. Quisque dolor enim, placerat et cursus vel, tristique sed ipsum. Mauris molestie pellentesque dignissim. Quisque adipiscing pretium mi mattis suscipit. Pellentesque felis dolor, ultrices quis malesuada blandit, aliquet at dolor. Proin sed libero sed lectus tempus varius. Duis sodales metus elit, eu tincidunt arcu interdum id. Nam egestas ipsum lacus, eu eleifend sapien auctor ac.</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td>Windows 7</td>
+<td>2012</td>
+<td>Quisque lacus nisl, fringilla sed elit at, commodo aliquam leo. Ut fermentum ligula et erat interdum congue. Proin vel auctor eros. Aliquam id magna sed augue cursus lobortis. Quisque sed ante libero. Nulla facilisi. Sed blandit bibendum bibendum. Donec pharetra elit nec eleifend mattis. Curabitur id justo eu augue adipiscing ultrices eget nec nunc. Ut vitae dolor felis. Pellentesque eu nisl at elit volutpat imperdiet vel vitae velit. Ut luctus felis odio, vitae tincidunt ligula vestibulum pretium. Nam fermentum justo sit amet cursus ultrices. Maecenas dignissim libero nec lorem feugiat, tincidunt ultrices arcu luctus. Proin aliquet nisi euismod, consequat sem.</td>
+</tr>
+<tr>
+<td>Toyota</td>
+<td>Tacoma</td>
+<td>2000</td>
+<td>Morbi elit erat, cursus sit amet tempus congue, tristique id quam. Morbi vehicula tellus sed condimentum tristique. Aenean mi ante, suscipit sed posuere sit amet, cursus nec odio. Duis eu diam ut augue vulputate aliquam. Nam elementum quam a ligula egestas ullamcorper. Integer ac ante vel eros faucibus bibendum sed et leo. Proin lobortis odio in neque consectetur, non fermentum sem mattis. Aenean id dictum arcu.</td>
+</tr>
+<tr>
+<td>Samsung</td>
+<td>Note II</td>
+<td>2013</td>
+<td>Cras a urna posuere, lacinia massa sit amet, tempor ante. Curabitur imperdiet faucibus purus vitae auctor. Curabitur congue hendrerit fermentum. Nam varius sollicitudin feugiat. Vestibulum varius elit commodo consectetur consectetur. Morbi sodales diam est, porttitor ullamcorper nibh ornare ut. In congue a magna vel malesuada. Aliquam lobortis neque ipsum, vitae auctor diam tristique a. Donec ultrices gravida bibendum. Sed eu pulvinar turpis, vel adipiscing dolor. Nullam aliquet erat urna. Morbi consequat lobortis erat in adipiscing. Fusce quis elit a leo accumsan dictum. Donec sed turpis at ante faucibus eleifend. Sed vestibulum lacus id elementum elementum. Aenean scelerisque, est nec porttitor.</td>
+</tr>
+<tr>
+<td>Big Bertha</td>
+<td>Warbird</td>
+<td>2014</td>
+<td>Aliquam condimentum iaculis eros nec fermentum. Fusce fringilla, diam a pulvinar commodo, tortor massa aliquet erat, vitae dictum sapien dolor et odio. Sed eu nisi eget nisi venenatis luctus. Aenean hendrerit porta pellentesque. Duis euismod dapibus leo, nec egestas libero congue non.</td>
+</tr>
+<tr>
+<td>Polara</td>
+<td>US-XD</td>
+<td>2010</td>
+<td>Donec vestibulum sodales luctus. Etiam nec fringilla nunc. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque at facilisis tortor. Suspendisse sit amet mi a arcu dictum malesuada. Sed rutrum fringilla dolor, non lacinia elit adipiscing ac. Donec suscipit velit commodo, iaculis velit placerat, rhoncus nunc. Mauris luctus imperdiet lorem sit amet venenatis. Ut venenatis ultricies libero sit amet convallis. Morbi ultrices pharetra neque eget laoreet. In nisl elit, lacinia vitae velit vitae, suscipit suscipit tortor. Suspendisse potenti.</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>Web Browser</td>
+<td>2012</td>
+<td>Sed ligula nunc, pellentesque et justo sit amet, accumsan consectetur sapien. Mauris justo ligula, consequat vitae consequat ac, bibendum vel purus. Proin pellentesque metus ut dui hendrerit pharetra vel sit amet eros. Aliquam ut odio at nunc rhoncus vestibulum et in libero. Morbi sed cursus justo. Morbi eleifend eros orci, nec eleifend ligula ultricie.</td>
+</tr>
+<tr>
+<td>Logitech</td>
+<td>M185-WM</td>
+<td>2009</td>
+<td>Aliquam ornare fringilla feugiat. Nam non eros eu dui dignissim semper. Donec felis tellus, viverra a mi laoreet, gravida suscipit dui. Nam porta dignissim lectus eleifend facilisis. Aliquam erat volutpat. Etiam elementum diam a elit consequat, facilisis vehicula arcu consequat. Cras pharetra odio eu enim auctor, faucibus tincidunt diam molestie. Suspendisse sit amet turpis eget magna tristique aliquam. Nullam hendrerit leo eget odio convallis euismod. Pellentesque sed pharetra lectus. Phasellus tincidunt, dolor sit amet blandit porttitor, urna sem mattis nunc, vitae hendrerit enim erat quis nibh. Mauris auctor tincidunt sem, eget dignissim mauris porta vitae. Proin fringilla orci eu lorem auctor tempus.</td>
+</tr>
+<tr>
+<td>LG</td>
+<td>735 HD</td>
+<td>2012</td>
+<td>Fusce rhoncus lectus quis ultricies dictum. Quisque ut porta leo, eget pulvinar nisi. In quis feugiat leo, quis luctus tellus. Nulla magna orci, volutpat a aliquet a, imperdiet vel orci. Donec in consectetur tellus. Curabitur id dui auctor, fringilla ligula ut, congue odio. Proin dictum odio sed eros faucibus mollis. Phasellus neque turpis, consectetur et diam non, sollicitudin tincidunt ante. Quisque ullamcorper euismod imperdiet.</td>
+</tr>
+<tr>
+<td>Excel 2010</td>
+<td>Spreadsheet</td>
+<td>2010</td>
+<td>Duis sed tempus enim. Fusce pulvinar est sit amet sem pretium euismod a at mauris. Sed in rhoncus metus, ut facilisis augue. Aliquam sem odio, tincidunt quis nulla vitae, imperdiet pulvinar nisl. Quisque luctus placerat pretium. Sed interdum ac dolor sit amet sodales. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</td>
+</tr>
+      </tbody>
+    </table>   
+   
+   </div>
+   
+   
+   <h1>ACME Vital Info</h1> 
+  
+    <div data-role="collapsible">              
+      <h1>Important Info</h1>
+      <p>Pellentesque imperdiet augue orci, eu faucibus nunc vulputate eget. Quisque convallis mi tortor, quis molestie dui sollicitudin sed. Curabitur et velit pharetra, fringilla massa a, lobortis sapien. Duis laoreet tellus id metus vestibulum porttitor. Vivamus vitae egestas augue, et feugiat mauris. Aliquam ultrices dictum nisl eget porta. Donec vel libero porttitor, tincidunt nunc sit amet, aliquet quam. Donec non ornare ipsum. Nulla turpis sem, sodales sit amet commodo non, condimentum eget nibh. Nam sed turpis varius nibh vulputate scelerisque. Donec eu egestas tortor, et egestas risus. Donec ornare diam vitae orci imperdiet, quis vestibulum dui aliquet. Ut vel lobortis mi. Pellentesque turpis metus, viverra et ornare vel, cursus ac metus.</p>
+    </div>
+    <div data-role="collapsible">
+      <h1>Whats New</h1>
+      <p>Vestibulum lectus neque, gravida vel elit id, malesuada euismod odio. In hac habitasse platea dictumst. Integer lacinia hendrerit arcu, vitae euismod nisi imperdiet quis. Morbi odio ipsum, sagittis non lacus in, pharetra vehicula ante. Aliquam mattis dapibus mauris vitae dictum. Fusce quis bibendum libero. Nunc leo metus, dignissim sit amet mi sed, pretium accumsan ipsum. Pellentesque elementum justo ipsum.</p>
+    </div>
+    <div data-role="collapsible">
+      <h1>Advanced Info</h1>
+      <p>Nulla vestibulum felis et pulvinar egestas. Nulla eu adipiscing mauris, a eleifend lorem. Donec faucibus ultricies nisi, a vehicula mi sollicitudin a. Vivamus hendrerit, purus ut pharetra eleifend, augue purus tristique magna, condimentum rhoncus neque lacus sed lorem. Suspendisse et ultrices erat. Nam in tempor tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam lacinia lectus sed fringilla commodo. Fusce vestibulum nulla a felis placerat, id pretium metus mollis. Etiam porttitor mi in imperdiet tristique.</p>
+    </div>   
+    
+    
+    
+<h1>Super Select</h1>    
+    
+    
+    
+<div class="selobj">
+<select data-role="none" id="select" >
+<option id="1" value="f1">Spokane Washington (1)</option>
+<option id="2" value="f2">The Hawaiian Islands (2)</option>
+<option id="3" value="f3">Gulf Coast of Florida (3)</option>
+</select>
+
+<div id="f1" class="pg">
+<h2>Content Section #1</h2>
+Nunc suscipit sapien et massa hendrerit, in semper elit euismod. Nunc vitae interdum enim. Duis et ligula a purus sollicitudin placerat. Nunc fringilla dui vel sodales cursus. Vestibulum semper enim convallis ligula cursus, eget viverra libero molestie. Mauris sodales lacinia mi nec consectetur. Donec eget pharetra risus. Vestibulum enim dui, dapibus quis tempus in, sollicitudin eget nulla.</div>
+<div id="f2" class="pg">
+<h2>Content Section #2</h2>
+Suspendisse potenti. Duis interdum lacus iaculis sollicitudin aliquet. Morbi eros nibh, consectetur vitae luctus non, fermentum nec libero. Sed venenatis erat quis lectus vehicula auctor. Quisque tristique odio ut ipsum pulvinar tempus. Suspendisse ullamcorper et ante in consectetur. Duis convallis, magna a cursus aliquam, sem nunc interdum lacus, eget rutrum arcu velit vitae diam. Cras dictum sed nisl in imperdiet. Sed accumsan nibh non arcu malesuada cursus. Integer a massa eros. Pellentesque vel sem nisl. In hac habitasse platea dictumst.</div>
+<div id="f3" class="pg">
+<h2>Content Section #3</h2>
+Sed venenatis erat quis lectus vehicula auctor. Quisque tristique odio ut ipsum pulvinar tempus. Suspendisse ullamcorper et ante in consectetur. Duis convallis, magna a cursus aliquam, sem nunc interdum lacus, eget rutrum arcu velit vitae diam. Cras dictum sed nisl in imperdiet.</div>
+
+</div>
+
+<h1>Image Carousel</h1> 
+
+<div id="owl-demo" class="owl-carousel owl-theme">
+<div class="item"><img src="https://dl.dropboxusercontent.com/s/w9z4lfde3qcjyhi/sgc1.png" alt="Item 1"></div>
+<div class="item"><img src="https://dl.dropboxusercontent.com/s/nfva8fjbgehb3ak/sgc2.png" alt="Item 2"></div>
+<div class="item"><img src="https://dl.dropboxusercontent.com/s/yqz2giny5ihv02p/sgc3.png" alt="Item 3"></div>
+<div class="item"><img src="https://dl.dropboxusercontent.com/s/727ahkp09vyqgll/sgc4.png" alt="Item 4"></div>
+<div class="item"><img src="https://dl.dropboxusercontent.com/s/w6m8fo5czu4yxox/sgc5.png" alt="Item 5"></div>
+<div class="item"><img src="https://dl.dropboxusercontent.com/s/7fcsfyzm4n0h1c9/sgc6.png" alt="Item 6"></div>
+<div class="item"><img src="https://dl.dropboxusercontent.com/s/01nlbv04wk6c709/sgc7.png" alt="Item 7"></div>
+</div>   
+
+
+
+<h1>Ultra Select</h1> 
+
+
+<div class="selobj">
+<select data-role="none" id="select" >
+<option id="1" value="i1">Option One</option>
+<option id="2" value="i2">Option Two</option>
+<option id="3" value="i3">Option Three</option>
+<option id="4" value="i4">Option Four</option>
+<option id="5" value="i5">Option Five</option>
+</select>
+
+<div id="i1" class="pg"><p>Nunc dictum faucibus enim, ut ultrices odio. Aliquam sollicitudin ullamcorper mollis. Curabitur sem nibh, volutpat sed accumsan ut, dignissim at nunc. Donec fermentum mauris vitae ligula blandit adipiscing.</p></div>
+<div id="i2" class="pg">
+<h3>Sample Table</h3>
+<div id="thetbl"><table id="hor-minimalist-b"><tbody><tr><th>Golfer</th><th>+/-</th><th>Events</th><th>Points</th><th>Wins</th></tr><tr><td>Rheba Schuh</td><td>-2</td><td>10</td><td>3924</td><td>5</td></tr><tr><td>Calista Barwick</td><td>0</td><td>18</td><td>4234</td><td>8</td></tr><tr><td>Beverley Degraw</td><td>-3</td><td>15</td><td>3552</td><td>12</td></tr><tr><td>Barbie Dills</td><td>2</td><td>18</td><td>4230</td><td>11</td></tr><tr><td>Cristin Sharber</td><td>2</td><td>12</td><td>4354</td><td>5</td></tr><tr><td>Rashad Bentley</td><td>3</td><td>6</td><td>3790</td><td>2</td></tr><tr><td>Jonell Delamater</td><td>-3</td><td>12</td><td>3768</td><td>10</td></tr></tbody></table></div>
+<p>
+Curabitur eu sapien at arcu feugiat lobortis. Pellentesque vel lacinia nibh. Integer congue rhoncus erat, congue consequat felis posuere eget. Suspendisse pharetra turpis ut blandit rhoncus. Maecenas lobortis at elit eget fermentum. Ut scelerisque fermentum tristique.
+</p>    
+</div>
+<div id="i3" class="pg">
+<h3>High Score Golf Table</h3>
+
+<div id="thetbl"><table id="hor-minimalist-b"><tbody><tr><th>Golfer</th><th>+/-</th><th>Events</th><th>Points</th><th>Wins</th></tr><tr><td>Jennifer Hold</td><td>0</td><td>15</td><td>4294</td><td>2</td></tr><tr><td>Salley Branscome</td><td>-1</td><td>10</td><td>4260</td><td>10</td></tr><tr><td>Santa Kosloski</td><td>0</td><td>17</td><td>3755</td><td>9</td></tr><tr><td>Ashton Balderrama</td><td>-3</td><td>7</td><td>3724</td><td>1</td></tr><tr><td>Calista Barwick</td><td>-2</td><td>11</td><td>4021</td><td>5</td></tr><tr><td>Dian Millener</td><td>-1</td><td>7</td><td>3848</td><td>2</td></tr><tr><td>Florrie Chae</td><td>4</td><td>13</td><td>4477</td><td>4</td></tr><tr><td>Viva Leroy</td><td>-1</td><td>12</td><td>3728</td><td>5</td></tr><tr><td>Marshall Amavisca</td><td>4</td><td>5</td><td>4210</td><td>3</td></tr><tr><td>Cristin Sharber</td><td>5</td><td>4</td><td>4418</td><td>1</td></tr></tbody></table></div>
+
+<p>Quisque id magna tellus. Curabitur sed metus commodo, ullamcorper orci nec, accumsan erat. In leo arcu, egestas imperdiet sagittis et, scelerisque vitae ligula.</p></div>
+<div id="i4" class="pg"><p>Nullam ligula sem, sodales sed cursus id, vehicula vel velit. Sed blandit, justo quis mollis vestibulum, mi sapien condimentum arcu, non tristique diam elit eget nisi.</p></div>
+<div id="i5" class="pg"><p>Fusce dui enim, posuere eget tellus sed, tincidunt tempor tortor. Sed blandit augue sem, quis suscipit dui dictum vel. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed quis lacus porta, luctus felis at, gravida tortor.</p></div>
+</div>
+    
+
+    
+    <h1>Low Level Content</h1>
+
+    <p>
+Xed luctus metus quis cursus molestie. Quisque id magna tellus. Curabitur sed metus commodo, ullamcorper orci nec, accumsan erat. In leo arcu, egestas imperdiet sagittis et, scelerisque vitae ligula. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ligula sem, sodales sed cursus id, vehicula vel velit. Sed blandit, justo quis mollis vestibulum, mi sapien condimentum arcu, non tristique diam elit eget nisi. Fusce dui enim, posuere eget tellus sed, tincidunt tempor tortor. Sed blandit augue sem, quis suscipit dui dictum vel. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed quis lacus porta, luctus felis at, gravida tortor.     
+    </p>
+    
+
+    <h1>Great Quality Video</h1>
+
+<div class="aspectWrap">
+<iframe id="vid1" src="//www.youtube.com/embed/7Pc1IV2oklA?vq=hd720" frameborder="0" allowfullscreen></iframe>
+</div>
+   
+<button id="btn2" class="ui-btn ui-btn-inline">Reset Video</button>
+
+    <h1>Job Fair</h1>
+<p>
+Vehicula vel velit. Sed blandit, justo quis mollis vestibulum, mi sapien condimentum arcu, non tristique diam elit eget nisi. Fusce dui enim, posuere eget tellus sed, tincidunt tempor tortor. Sed blandit augue sem, quis suscipit dui dictum vel.     
+    </p>
+    
+  <h3>Copyright 2014</h3>   
+      
+  </div>
+
+
+</div>
+
+
+
+</body>
+</html>
